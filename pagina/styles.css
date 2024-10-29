@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+#menu-toggle {
+    position: absolute;
+    top: 10px; /* Baja un poco el logo */
+    left: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Animación de movimiento */
+    z-index: 1000; /* Asegura que el logo esté encima del menú */
+}
+
+.logo-img {
+    width: 50px; /* Aumenta el tamaño del logo aquí */
+    height: auto;
+}
+
+nav {
+    width: 250px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: fixed;
+    left: -250px; /* Ocultar el menú inicialmente */
+    transition: left 0.3s ease; /* Animación para abrir/cerrar */
+}
+
+nav.active {
+    left: 0; /* Mostrar el menú */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 20px;
+}
+
+nav ul li {
+    padding: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.submenu {
+    display: none; /* Ocultar el submenú por defecto */
+    padding-left: 20px;
+}
+
+.dropdown:hover + .submenu {
+    display: block; /* Mostrar el submenú al pasar el mouse */
+}
+
+#content {
+    margin-left: 20px;
+    padding: 20px;
+    text-align: center; /* Centrar el texto */
+    transition: margin-left 0.3s ease; /* Animar el contenido al abrir/cerrar menú */
+    margin-top: 100px; /* Baja el contenido más hacia abajo */
+}
+
+nav.active + #content {
+    margin-left: 250px; /* Mover el contenido cuando el menú está activo */
+}
+
+#menu-toggle.open {
+    transform: rotate(90deg); /* Rotar el ícono cuando el menú está abierto */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        width: 200px; /* Reducir el ancho del menú en pantallas pequeñas */
+    }
+
+    #menu-toggle {
+        top: 15px; /* Ajustar la posición del logo en pantallas pequeñas */
+        left: 15px;
+    }
+
+    .logo-img {
+        width: 40px; /* Ajustar el tamaño del logo en pantallas pequeñas */
+    }
+
+    #content {
+        margin-left: 15px; /* Ajustar margen en pantallas pequeñas */
+    }
+}
